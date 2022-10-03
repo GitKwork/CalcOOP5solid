@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public interface CheckOnCorrectInput {
-    public  static    boolean checkRealExpression(String expressionReal) {
+    public static boolean checkRealExpression(String expressionReal) {
         String[] str = expressionReal.split(" ");
 
         if (str.length != 3) {

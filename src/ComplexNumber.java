@@ -6,9 +6,6 @@ class ComplexNumber {
         this.image = i;
     }
 
-    public ComplexNumber() {
-    }
-
     public double getReal() {
         return real;
     }

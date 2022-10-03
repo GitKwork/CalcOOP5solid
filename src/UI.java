@@ -9,7 +9,7 @@ public class UI {
     }
 
     public String chooseTypeNumber() {
-        System.out.println("\nchoose the type of numbers (complex or real):  c/r  ");
+        System.out.println("\n choose the type of numbers (complex or real):  c/r  ");
         if (input.next().equals("r")) {
             return "r";
 
@@ -19,9 +19,13 @@ public class UI {
     }
 
     public String chooseExitContue() {
-        System.out.println("\nDo you want to contunue?  (y/n) ");
-        return input.next();
-
+        System.out.println("\n Do you want to contunue? Enter 'y'/'n' - yes/not ");
+        String in = input.next();
+        while (!(in.equals("y") || in.equals("n"))) {
+            System.out.println("\n Input Error!\n Do you want to contunue? Enter 'y'/'n' - yes/not ");
+            in = input.next();
+        }
+        return in;
     }
 
 }

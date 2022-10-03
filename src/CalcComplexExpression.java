@@ -1,5 +1,4 @@
 public class CalcComplexExpression implements MathArithmetiicImag, MathArithmeticsReal {
-
     private double a1;
     private double b1;
     private double a2;
@@ -16,93 +15,39 @@ public class CalcComplexExpression implements MathArithmetiicImag, MathArithmeti
         this.mathOperation = mathOperation;
         this.operation1 = operation1;
         this.operation2 = operation2;
-
     }
 
     public String solveComplex() {
-
-
         switch (mathOperation) {
             case "+":
-                return String.valueOf(sumReal()) + " + " + String.valueOf(sumImag()) + "i";
+                return String.valueOf(sumReal(a1, a2)) + " + " + String.valueOf(sumSubImag(b1, b2, operation1, operation2, mathOperation)) + "i";
             case "-":
-                return String.valueOf(subReal()) + " + " + String.valueOf(subImag()) + "i";
+                return String.valueOf(subReal(a1, a2)) + " + " + String.valueOf(sumSubImag(b1, b2, operation1, operation2, mathOperation)) + "i";
 
             case "/":
-                return String.valueOf(divReal()) + " + " + String.valueOf(divImag()) + "i";
+                return String.valueOf(divReal()) + " + " + String.valueOf(divMulImag(a1, a2, b1, b2, operation1, operation2, mathOperation)) + "i";
             case "*":
-                return String.valueOf(mulReal()) + " + " + String.valueOf(mulImag()) + "i";
+                return String.valueOf(mulReal()) + " + " + String.valueOf(divMulImag(a1, a2, b1, b2, operation1, operation2, mathOperation)) + "i";
 
             default:
                 return "";
         }
     }
 
-    @Override
-    public double sumImag() {
-
-        if (operation1.equals("+") && operation2.equals("-")) return b1 - b2;
-        else if (operation1.equals("-") && operation2.equals("+")) return -b1 + b2;
-        else if (operation1.equals("-") && operation2.equals("-")) return -b1 - b2;
-        else return b1 + b2;
-
-    }
-
-
-    @Override
-    public double subImag() {
-        if (operation1.equals("+") && operation2.equals("-")) return b1 + b2;
-        else if (operation1.equals("-") && operation2.equals("+")) return -b1 - b2;
-        else if (operation1.equals("-") && operation2.equals("-")) return -b1 + b2;
-        else return b1 - b2;
-    }
-
-    @Override
-    public double divImag() {
-
-        if (operation1.equals("+") && operation2.equals("-")) return (b1 * a2 - a1 * -b2) / (a2 * a2 + b2 * b2);
-        else if (operation1.equals("-") && operation2.equals("+")) return (-b1 * a2 - a1 * b2) / (a2 * a2 + b2 * b2);
-        else if (operation1.equals("-") && operation2.equals("-")) return (-b1 * a2 - a1 * -b2) / (a2 * a2 + b2 * b2);
-        else return (b1 * a2 - a1 * b2) / (a2 * a2 + b2 * b2);
-
-    }
-
-    @Override
-    public double mulImag() {
-        if (operation1.equals("+") && operation2.equals("-")) return (a1 * -b2 + b1 * a2);
-        else if (operation1.equals("-") && operation2.equals("+")) return (a1 * b2 + -b1 * a2);
-        else if (operation1.equals("-") && operation2.equals("-")) return (a1 * -b2 + -b1 * a2);
-        else return (a1 * b2 + b1 * a2);
-    }
-
-    @Override
-    public double sumReal() {
-        return a1 + a2;
-    }
-
-    @Override
-    public double subReal() {
-        return a1 - a2;
-    }
 
     @Override
     public double divReal() {
-
         if (operation1.equals("+") && operation2.equals("-")) return (a1 * a2 + b1 * -b2) / (a2 * a2 + b2 * b2);
         else if (operation1.equals("-") && operation2.equals("+")) return (a1 * a2 + -b1 * b2) / (a2 * a2 + b2 * b2);
         else if (operation1.equals("-") && operation2.equals("-")) return (a1 * a2 + -b1 * -b2) / (a2 * a2 + b2 * b2);
         else return (a1 * a2 + b1 * b2) / (a2 * a2 + b2 * b2);
-
     }
 
     @Override
     public double mulReal() {
-
         if (operation1.equals("+") && operation2.equals("-")) return (a1 * a2 - b1 * -b2);
         else if (operation1.equals("-") && operation2.equals("+")) return (a1 * a2 - -b1 * b2);
         else if (operation1.equals("-") && operation2.equals("-")) return (a1 * a2 - -b1 * -b2);
         else return (a1 * a2 - b1 * b2);
-
     }
-
 }

@@ -14,9 +14,9 @@ public class CalcRealExpression implements MathArithmeticsReal {
     public double solveReal() throws IllegalAccessException {
         switch (mathOperation) {
             case "+":
-                return sumReal();
+                return sumReal(a, b);
             case "-":
-                return subReal();
+                return subReal(a, b);
             case "/":
                 return divReal();
             case "*":
@@ -24,16 +24,6 @@ public class CalcRealExpression implements MathArithmeticsReal {
             default:
                 throw new IllegalAccessException("IllegalAccessException");
         }
-    }
-
-    @Override
-    public double sumReal() {
-        return a + b;
-    }
-
-    @Override
-    public double subReal() {
-        return a - b;
     }
 
     @Override

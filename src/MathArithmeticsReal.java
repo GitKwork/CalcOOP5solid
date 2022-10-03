@@ -1,11 +1,16 @@
 public interface MathArithmeticsReal {
 
+    public default double sumReal(double a, double b) {
 
-    public double sumReal();
+        return a + b;
+    }
 
-    public double subReal();
+    public default double subReal(double a, double b) {
+        return a - b;
 
-    public double divReal();
+    }
 
-    public double mulReal();
+    double divReal();
+
+    double mulReal();
 }
